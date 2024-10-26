@@ -16,6 +16,11 @@ const StarWars = () => {
   const [totalData, setTotalData] = useState(0);
   const pageSize = 10;
 
+  // get people list on load
+  useEffect(() => {
+    getPeopleList(currentPage);
+  }, [currentPage]);
+
   // get people list
   const getPeopleList = async (page) => {
     if (allList[page]) {
@@ -34,11 +39,6 @@ const StarWars = () => {
       stopLoading();
     }
   };
-
-  // get people list on load
-  useEffect(() => {
-    getPeopleList(currentPage);
-  }, [currentPage, getPeopleList]);
 
   const openModal = (data) => {
     setModalData(data);
